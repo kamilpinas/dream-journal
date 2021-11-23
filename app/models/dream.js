@@ -6,33 +6,27 @@ const { AnalysisSchema } = require('../models/analysis')
 const DreamSchema = new mongoose.Schema(
   {
     title: {
-      type: String,
-      required: true
+      type: String
     },
 
     description: {
-      type: String,
-      required: true
+      type: String
     },
 
     startDate: {
-      type: Date,
-      required: true
+      type: Date
     },
 
     endDate: {
-      type: Date,
-      required: true
+      type: Date
     },
 
     category: {
-      type: CategorySchema,
-      required: true
+      type: CategorySchema
     },
 
     analysis: {
-      type: AnalysisSchema,
-      required: true
+      type: AnalysisSchema
     }
   },
   {
