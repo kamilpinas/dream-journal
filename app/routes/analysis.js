@@ -10,10 +10,16 @@ const {
   validateCreateAnalysis
 } = require('../controllers/analysis/validators/validateCreateAnalysis')
 /*
- * Get items route
+ * Analysis routes
+ */
+
+/*
+ * Get analysis by id route
  */
 router.get('/:id', trimRequest.all, getAnalysis)
-
+/*
+ * Add analysis route
+ */
 router.post('/', trimRequest.all, validateCreateAnalysis, createAnalysis)
 
 module.exports = router
