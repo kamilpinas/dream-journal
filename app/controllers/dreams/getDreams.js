@@ -1,4 +1,4 @@
-const Dream = require('../../models/dream')
+const { Dream } = require('../../models/dream')
 const { handleError } = require('../../middleware/utils')
 const { getItems, checkQueryString } = require('../../middleware/db')
 

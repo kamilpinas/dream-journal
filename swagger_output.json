@@ -2,17 +2,66 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "REST API",
-    "description": ""
+    "title": "Dziennik snów API",
+    "description": "Dokumentacja endpointów dziennika snów"
   },
   "host": "localhost:3000",
   "basePath": "/",
-  "tags": [],
-  "schemes": [
-    "http"
+  "tags": [
+    {
+      "name": "Analysis",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Auth",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Categories",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Consciousness",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Dream",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Emotions",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Profile",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Shared Dreams",
+      "description": "Endpoints"
+    },
+    {
+      "name": "Users",
+      "description": "Endpoints"
+    }
   ],
-  "consumes": [],
-  "produces": [],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "JWT",
+      "in": "header",
+      "name": "X-API-KEY"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
   "paths": {
     "/": {
       "get": {
@@ -22,7 +71,7 @@
         "responses": {}
       }
     },
-    "/register": {
+    "/auth/register": {
       "post": {
         "tags": [],
         "description": "",
@@ -30,7 +79,7 @@
         "responses": {}
       }
     },
-    "/verify": {
+    "/auth/verify": {
       "post": {
         "tags": [],
         "description": "",
@@ -38,7 +87,7 @@
         "responses": {}
       }
     },
-    "/forgot": {
+    "/auth/forgot": {
       "post": {
         "tags": [],
         "description": "",
@@ -46,7 +95,7 @@
         "responses": {}
       }
     },
-    "/reset": {
+    "/auth/reset": {
       "post": {
         "tags": [],
         "description": "",
@@ -54,7 +103,7 @@
         "responses": {}
       }
     },
-    "/token": {
+    "/auth/token": {
       "get": {
         "tags": [],
         "description": "",
@@ -62,7 +111,7 @@
         "responses": {}
       }
     },
-    "/login": {
+    "/auth/login": {
       "post": {
         "tags": [],
         "description": "",
@@ -76,6 +125,12 @@
         "description": "",
         "parameters": [],
         "responses": {}
+      },
+      "patch": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
       }
     },
     "/analysis/": {
@@ -85,7 +140,191 @@
         "parameters": [],
         "responses": {}
       }
+    },
+    "/categories/": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/consciousness/{id}": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/consciousness/": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/dream/{id}": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "patch": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/dream/": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/emotions/": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/profile/": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "patch": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/profile/changePassword": {
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "patch": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/sharedDreams/{id}": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/sharedDreams/": {
+      "get": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      },
+      "post": {
+        "tags": [],
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
     }
   },
-  "definitions": {}
+  "definitions": {
+    "register": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "andrzejek12"
+        },
+        "email": {
+          "type": "string",
+          "example": "andrzejek1232@wp.pl"
+        },
+        "password": {
+          "type": "string",
+          "example": "haslo123"
+        },
+        "verification": {
+          "type": "string",
+          "example": "token"
+        }
+      }
+    }
+  }
 }

@@ -14,10 +14,6 @@ const {
   validateCreateAnalysis,
   validateUpdateAnalysis
 } = require('../controllers/analysis/validators')
-/*
- * Get items route
- */
-router.get('/:id', trimRequest.all, getAnalysis)
 
 /*
  * Get analysis by id route

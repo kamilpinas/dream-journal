@@ -2,15 +2,15 @@ const express = require('express')
 const router = express.Router()
 
 // Load Auth route
-router.use('/', require('./auth'))
+router.use('/auth', require('./auth'))
 router.use('/analysis', require('./analysis'))
-router.use('/', require('./categories'))
-router.use('/analysis', require('./consciousness'))
-router.use('/analysis', require('./dream'))
-router.use('/analysis', require('./emotions'))
-router.use('/analysis', require('./profile'))
-router.use('/analysis', require('./users'))
-router.use('/analysis', require('./'))
+router.use('/categories', require('./categories'))
+router.use('/consciousness', require('./consciousness'))
+router.use('/dream', require('./dream'))
+router.use('/emotions', require('./emotions'))
+router.use('/profile', require('./profile'))
+router.use('/users', require('./users'))
+router.use('/sharedDreams', require('./sharedDreams'))
 
 /*
  * Setup routes for index

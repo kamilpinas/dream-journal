@@ -8,14 +8,14 @@ const createItemInDb = ({
   sharedOn = new Date(),
   votes = 0,
   user = {},
-  dreams = []
+  dream = {}
 }) => {
   return new Promise((resolve, reject) => {
     const sharedDream = new SharedDream({
       sharedOn,
       votes,
       user,
-      dreams
+      dream
     })
     sharedDream.save((err, item) => {
       if (err) {
