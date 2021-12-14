@@ -19,7 +19,7 @@ const SharedDreamSchema = new mongoose.Schema(
       required: true
     },
     dream: {
-      type: [DreamSchema],
+      type: DreamSchema,
       required: true
     }
   },

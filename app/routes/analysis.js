@@ -4,14 +4,20 @@ require('../../config/passport')
 
 const trimRequest = require('trim-request')
 
-const { getAnalysis, createAnalysis } = require('../controllers/analysis')
+const {
+  getAnalysis,
+  createAnalysis,
+  updateAnalysis
+} = require('../controllers/analysis')
 
 const {
-  validateCreateAnalysis
-} = require('../controllers/analysis/validators/validateCreateAnalysis')
+  validateCreateAnalysis,
+  validateUpdateAnalysis
+} = require('../controllers/analysis/validators')
 /*
- * Analysis routes
+ * Get items route
  */
+router.get('/:id', trimRequest.all, getAnalysis)
 
 /*
  * Get analysis by id route
@@ -21,5 +27,7 @@ router.get('/:id', trimRequest.all, getAnalysis)
  * Add analysis route
  */
 router.post('/', trimRequest.all, validateCreateAnalysis, createAnalysis)
+
+router.patch('/:id', trimRequest.all, validateUpdateAnalysis, updateAnalysis)
 
 module.exports = router

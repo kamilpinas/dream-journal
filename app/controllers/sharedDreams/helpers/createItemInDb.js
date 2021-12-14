@@ -1,28 +1,23 @@
-const { Dream } = require('../../../models/dream')
+const { SharedDream } = require('../../../models/sharedDream')
 const { buildErrObject } = require('../../../middleware/utils')
 /**
  * Creates a new item in database
  * @param {Object} req - request object
  */
-
 const createItemInDb = ({
-  title = '',
-  description = '',
-  startDate = new Date(),
-  endDate = new Date(),
-  category = {},
-  analysis = {}
+  sharedOn = new Date(),
+  votes = 0,
+  user = {},
+  dreams = []
 }) => {
   return new Promise((resolve, reject) => {
-    const dream = new Dream({
-      title,
-      description,
-      startDate,
-      endDate,
-      category,
-      analysis
+    const sharedDream = new SharedDream({
+      sharedOn,
+      votes,
+      user,
+      dreams
     })
-    dream.save((err, item) => {
+    sharedDream.save((err, item) => {
       if (err) {
         reject(buildErrObject(422, err.message))
       }

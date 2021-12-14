@@ -1,5 +1,5 @@
 const uuid = require('uuid')
-const User = require('../../../models/user')
+const { User } = require('../../../models/user')
 const { buildErrObject } = require('../../../middleware/utils')
 
 /**

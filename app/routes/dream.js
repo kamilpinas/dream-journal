@@ -7,7 +7,8 @@ const {
   getDream,
   createDream,
   updateDream,
-  deleteDream
+  deleteDream,
+  getDreams
 } = require('../controllers/dreams')
 
 const {
@@ -17,6 +18,8 @@ const {
 } = require('../controllers/dreams/validators')
 
 router.get('/:id', trimRequest.all, getDream)
+
+router.get('/', trimRequest.all, getDreams)
 
 router.post('/', trimRequest.all, validateCreateDream, createDream)
 
