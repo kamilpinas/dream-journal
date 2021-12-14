@@ -4,19 +4,22 @@ require('../../config/passport')
 const trimRequest = require('trim-request')
 
 const {
-  getDream,
-  createDream,
-  updateDream,
-  deleteDream
+    getDream,
+    createDream,
+    updateDream,
+    deleteDream,
+    getDreams
 } = require('../controllers/dreams')
 
 const {
-  validateCreateDream,
-  validateUpdateDream,
-  validateDeleteDream
+    validateCreateDream,
+    validateUpdateDream,
+    validateDeleteDream
 } = require('../controllers/dreams/validators')
 
 router.get('/:id', trimRequest.all, getDream)
+
+router.get('/', trimRequest.all, getDreams)
 
 router.post('/', trimRequest.all, validateCreateDream, createDream)
 
