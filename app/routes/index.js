@@ -10,7 +10,7 @@ router.use('/dream', require('./dream'))
 router.use('/emotions', require('./emotions'))
 router.use('/profile', require('./profile'))
 router.use('/users', require('./users'))
-router.use('/sharedDreams', require('./sharedDreams'))
+router.use('/shared-dreams', require('./sharedDreams'))
 
 /*
  * Setup routes for index

@@ -1,4 +1,6 @@
 const { SharedDream } = require('../../../models/sharedDream')
+const { Dream } = require('../../../models/dream')
+const { User } = require('../../../models/user')
 const { buildErrObject } = require('../../../middleware/utils')
 /**
  * Creates a new item in database
@@ -7,8 +9,8 @@ const { buildErrObject } = require('../../../middleware/utils')
 const createItemInDb = ({
   sharedOn = new Date(),
   votes = 0,
-  user = {},
-  dream = {}
+  user = new User(),
+  dream = new Dream()
 }) => {
   return new Promise((resolve, reject) => {
     const sharedDream = new SharedDream({
@@ -21,7 +23,7 @@ const createItemInDb = ({
       if (err) {
         reject(buildErrObject(422, err.message))
       }
-      item = JSON.parse(JSON.stringify(item))
+      item = JSON.parse(item)
 
       resolve(item)
     })

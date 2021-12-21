@@ -7,20 +7,16 @@ const mongoosePaginate = require('mongoose-paginate-v2')
 const SharedDreamSchema = new mongoose.Schema(
   {
     sharedOn: {
-      type: Date,
-      required: true
+      type: Date
     },
     votes: {
-      type: Number,
-      required: true
+      type: Number
     },
     user: {
-      type: UserSchema,
-      required: true
+      type: UserSchema
     },
     dream: {
-      type: DreamSchema,
-      required: true
+      type: DreamSchema
     }
   },
   {

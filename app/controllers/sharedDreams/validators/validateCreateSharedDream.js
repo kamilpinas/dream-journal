@@ -4,13 +4,7 @@ const { check } = require('express-validator')
  * Validates create new item request
  */
 const validateCreateSharedDream = [
-  check('sharedOn')
-    .exists()
-    .withMessage('MISSING')
-    .not()
-    .isEmpty()
-    .withMessage('IS_EMPTY')
-    .trim(),
+  check('sharedOn').exists().withMessage('MISSING'),
   check('votes').exists().withMessage('MISSING'),
   check('user').exists().withMessage('MISSING'),
   check('dream').exists().withMessage('MISSING'),
