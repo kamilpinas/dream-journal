@@ -1,7 +1,7 @@
 const { matchedData } = require('express-validator')
 const { handleError } = require('../../middleware/utils')
-const { createItemInDb } = require('./helpers/createItemInDb')
-
+const { createItem } = require('../../middleware/db')
+const { SharedDream } = require('../../models/sharedDream')
 /**
  * Create item function called by route
  * @param {Object} req - request object
@@ -10,8 +10,7 @@ const { createItemInDb } = require('./helpers/createItemInDb')
 const createSharedDream = async (req, res) => {
   try {
     req = matchedData(req)
-    const item = await createItemInDb(req)
-    res.status(201).json(item)
+    res.status(201).json(await createItem(req, SharedDream))
   } catch (error) {
     handleError(res, error)
   }

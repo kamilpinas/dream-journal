@@ -1,7 +1,13 @@
 const express = require('express')
 const router = express.Router()
 require('../../config/passport')
+const passport = require('passport')
+const requireAuth = passport.authenticate('jwt', {
+  session: false
+})
 const trimRequest = require('trim-request')
+
+const { roleAuthorization } = require('../controllers/auth')
 
 const {
   getConsciousness,
@@ -11,8 +17,20 @@ const {
 /*
  * Get items route
  */
-router.get('/:id', trimRequest.all, getConsciousness)
+router.get(
+  '/:id',
+  requireAuth,
+  roleAuthorization(['user', 'admin']),
+  trimRequest.all,
+  getConsciousness
+)
 
-router.post('/', trimRequest.all, createConsciousness)
+router.post(
+  '/',
+  requireAuth,
+  roleAuthorization(['user', 'admin']),
+  trimRequest.all,
+  createConsciousness
+)
 
 module.exports = router

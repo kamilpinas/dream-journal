@@ -34,7 +34,7 @@ const {
 router.get(
   '/',
   requireAuth,
-  roleAuthorization(['admin']),
+  roleAuthorization(['admin', 'user']),
   trimRequest.all,
   getUsers
 )
@@ -45,7 +45,7 @@ router.get(
 router.post(
   '/',
   requireAuth,
-  roleAuthorization(['admin']),
+  roleAuthorization(['admin', 'user']),
   trimRequest.all,
   validateCreateUser,
   createUser
@@ -69,7 +69,7 @@ router.get(
 router.patch(
   '/:id',
   requireAuth,
-  roleAuthorization(['admin']),
+  roleAuthorization(['admin', 'user']),
   trimRequest.all,
   validateUpdateUser,
   updateUser
@@ -81,7 +81,7 @@ router.patch(
 router.delete(
   '/:id',
   requireAuth,
-  roleAuthorization(['admin']),
+  roleAuthorization(['admin', 'user']),
   trimRequest.all,
   validateDeleteUser,
   deleteUser

@@ -5,11 +5,11 @@ const { SharedDream } = require('../../../models/sharedDream')
  * @param {string} id - item id
  * @param {Object} req - request object
  */
-const incrementVote = (id = '') => {
+const decrementVote = (id = '') => {
   return new Promise((resolve, reject) => {
     SharedDream.findOneAndUpdate(
       { _id: id },
-      { $inc: { votes: 1 } },
+      { $inc: { votes: -1 } },
       { new: true },
       async (err, item) => {
         try {
@@ -23,4 +23,4 @@ const incrementVote = (id = '') => {
   })
 }
 
-module.exports = { incrementVote }
+module.exports = { decrementVote }

@@ -1,4 +1,4 @@
-const User = require('../../models/user')
+const { User } = require('../../models/user')
 const { matchedData } = require('express-validator')
 const { isIDGood, handleError } = require('../../middleware/utils')
 const { getItem } = require('../../middleware/db')

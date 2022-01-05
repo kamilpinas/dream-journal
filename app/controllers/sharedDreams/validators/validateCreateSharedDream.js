@@ -6,7 +6,7 @@ const { check } = require('express-validator')
 const validateCreateSharedDream = [
   check('sharedOn').exists().withMessage('MISSING'),
   check('votes').exists().withMessage('MISSING'),
-  check('user').exists().withMessage('MISSING'),
+  check('username').exists().withMessage('MISSING'),
   check('dream').exists().withMessage('MISSING'),
 
   (req, res, next) => {

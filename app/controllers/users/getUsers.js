@@ -1,4 +1,4 @@
-const User = require('../../models/user')
+const { User } = require('../../models/user')
 const { handleError } = require('../../middleware/utils')
 const { getItems, checkQueryString } = require('../../middleware/db')
 

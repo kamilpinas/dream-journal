@@ -7,6 +7,7 @@ const { getItem } = require('./getItem')
 const { getItems } = require('./getItems')
 const { listInitOptions } = require('./listInitOptions')
 const { updateItem } = require('./updateItem')
+const { getRandomItem } = require('./getRandomItem')
 
 module.exports = {
   buildSort,
@@ -17,5 +18,6 @@ module.exports = {
   getItem,
   getItems,
   listInitOptions,
-  updateItem
+  updateItem,
+  getRandomItem
 }
