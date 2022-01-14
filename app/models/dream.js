@@ -5,6 +5,9 @@ const { AnalysisSchema } = require('../models/analysis')
 
 const DreamSchema = new mongoose.Schema(
   {
+    userId: {
+      type: String
+    },
     title: {
       type: String
     },
@@ -20,7 +23,9 @@ const DreamSchema = new mongoose.Schema(
     endDate: {
       type: Date
     },
-
+    isShared: {
+      type: Boolean
+    },
     category: {
       type: CategorySchema
     },

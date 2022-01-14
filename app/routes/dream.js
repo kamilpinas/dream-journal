@@ -13,13 +13,15 @@ const {
   createDream,
   updateDream,
   deleteDream,
-  getDreams
+  getDreams,
+  updateIsShared
 } = require('../controllers/dreams')
 
 const {
   validateCreateDream,
   validateUpdateDream,
-  validateDeleteDream
+  validateDeleteDream,
+  validateIsShared
 } = require('../controllers/dreams/validators')
 
 router.get(
@@ -63,6 +65,15 @@ router.delete(
   trimRequest.all,
   validateDeleteDream,
   deleteDream
+)
+
+router.patch(
+  '/isShared/:id',
+  requireAuth,
+  roleAuthorization(['user', 'admin']),
+  trimRequest.all,
+  validateIsShared,
+  updateIsShared
 )
 
 module.exports = router

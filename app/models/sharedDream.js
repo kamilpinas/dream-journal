@@ -1,4 +1,4 @@
-const { DreamSchema } = require('../models/dream')
+const { CategorySchema } = require('../models/category')
 
 const mongoose = require('mongoose')
 const mongoosePaginate = require('mongoose-paginate-v2')
@@ -14,8 +14,11 @@ const SharedDreamSchema = new mongoose.Schema(
     username: {
       type: String
     },
-    dream: {
-      type: DreamSchema
+    description: {
+      type: String
+    },
+    category: {
+      type: CategorySchema
     }
   },
   {

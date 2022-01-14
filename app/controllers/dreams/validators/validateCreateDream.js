@@ -4,6 +4,13 @@ const { check } = require('express-validator')
  * Validates create new item request
  */
 const validateCreateDream = [
+  check('userId')
+    .exists()
+    .withMessage('MISSING')
+    .not()
+    .isEmpty()
+    .withMessage('IS_EMPTY')
+    .trim(),
   check('title')
     .exists()
     .withMessage('MISSING')

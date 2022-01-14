@@ -6,6 +6,7 @@ const { buildErrObject } = require('../../../middleware/utils')
  */
 
 const createItemInDb = ({
+  userId = '',
   title = '',
   description = '',
   startDate = new Date(),
@@ -15,6 +16,7 @@ const createItemInDb = ({
 }) => {
   return new Promise((resolve, reject) => {
     const dream = new Dream({
+      userId,
       title,
       description,
       startDate,
