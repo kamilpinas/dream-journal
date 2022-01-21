@@ -9,7 +9,6 @@ const trimRequest = require('trim-request')
 
 const { roleAuthorization } = require('../controllers/auth')
 const {
-  getDream,
   createDream,
   updateDream,
   deleteDream,
@@ -21,22 +20,16 @@ const {
   validateCreateDream,
   validateUpdateDream,
   validateDeleteDream,
-  validateIsShared
+  validateIsShared,
+  validateGetDreams
 } = require('../controllers/dreams/validators')
 
 router.get(
-  '/:id',
+  '/:userId',
   requireAuth,
   roleAuthorization(['user', 'admin']),
   trimRequest.all,
-  getDream
-)
-
-router.get(
-  '/',
-  requireAuth,
-  roleAuthorization(['user', 'admin']),
-  trimRequest.all,
+  validateGetDreams,
   getDreams
 )
 

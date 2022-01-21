@@ -1,21 +1,24 @@
-const { buildErrObject } = require('../../../middleware/utils')
+const { itemNotFound } = require('../../../middleware/utils')
 
 /**
  * Verifies an user
  * @param {Object} user - user object
  */
-const verifyUser = (user = {}) => {
+const verifyUser = (model = {}, id = '') => {
+  console.log(id)
   return new Promise((resolve, reject) => {
-    user.verified = true
-    user.save((err, item) => {
-      if (err) {
-        return reject(buildErrObject(422, err.message))
+    model.updateOne(
+      { verification: id },
+      { $set: { verified: true } },
+      async (err, item) => {
+        try {
+          await itemNotFound(err, item, 'NOT_FOUND')
+          resolve('Pomyślnie aktywowano konto')
+        } catch (error) {
+          reject(error)
+        }
       }
-      resolve({
-        email: item.email,
-        verified: item.verified
-      })
-    })
+    )
   })
 }
 

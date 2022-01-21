@@ -11,6 +11,7 @@ router.use('/emotions', require('./emotions'))
 router.use('/profile', require('./profile'))
 router.use('/users', require('./users'))
 router.use('/shared-dreams', require('./sharedDreams'))
+router.use('/notifications', require('./notification'))
 
 /*
  * Setup routes for index

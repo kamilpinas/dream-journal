@@ -16,13 +16,15 @@ const {
   getSharedDreams,
   getRandomSharedDream,
   incrementVotes,
-  decrementVotes
+  decrementVotes,
+  getSharedDreamWithCategory
 } = require('../controllers/sharedDreams')
 
 const {
   validateCreateSharedDream,
   validateDeleteSharedDream,
-  validateUpdateVoteSharedDream
+  validateUpdateVoteSharedDream,
+  validateGetDreamWithCategory
 } = require('../controllers/sharedDreams/validators')
 
 router.get(
@@ -31,6 +33,15 @@ router.get(
   roleAuthorization(['user', 'admin']),
   trimRequest.all,
   getRandomSharedDream
+)
+
+router.get(
+  '/category/:name',
+  requireAuth,
+  roleAuthorization(['user', 'admin']),
+  trimRequest.all,
+  validateGetDreamWithCategory,
+  getSharedDreamWithCategory
 )
 
 router.get(

@@ -1,7 +1,7 @@
 {
   "registration": {
-    "SUBJECT": "Verify your email at myProject",
-    "MESSAGE": "<p>Hello %s.</p> <p>Welcome! To verify your email, please click in this link:</p> <p>%s/verify/%s</p> <p>Thank you.</p>"
+    "SUBJECT": "Aktywacja konta w Dzienniku Snów",
+    "MESSAGE": "<p>Witaj! %s.</p> <p>Aby aktywować swoje konto, kliknij w ten link:</p> <p>%s/auth/verify/%s</p> <p>Dziękujemy.</p>"
   },
   "forgotPassword": {
     "SUBJECT": "Password recovery at myProject",

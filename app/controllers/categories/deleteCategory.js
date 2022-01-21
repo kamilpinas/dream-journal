@@ -1,21 +1,21 @@
+const { Category } = require('../../models/category')
 const { matchedData } = require('express-validator')
-const { Dream } = require('../../models/dream')
-const { getItem } = require('../../middleware/db')
 const { isIDGood, handleError } = require('../../middleware/utils')
+const { deleteItem } = require('../../middleware/db')
 
 /**
- * Get item function called by route
+ * Delete item function called by route
  * @param {Object} req - request object
  * @param {Object} res - response object
  */
-const getDream = async (req, res) => {
+const deleteCategory = async (req, res) => {
   try {
     req = matchedData(req)
     const id = await isIDGood(req.id)
-    res.status(200).json(await getItem(id, Dream))
+    res.status(200).json(await deleteItem(id, Category))
   } catch (error) {
     handleError(res, error)
   }
 }
 
-module.exports = { getDream }
+module.exports = { deleteCategory }

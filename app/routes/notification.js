@@ -8,34 +8,33 @@ const requireAuth = passport.authenticate('jwt', {
 const trimRequest = require('trim-request')
 
 const { roleAuthorization } = require('../controllers/auth')
+const {
+  createNotification,
+  getNotification
+} = require('../controllers/notifications')
 
 const {
-  validateCreateConsciousness
-} = require('../controllers/consciousnesses/validators')
+  validateCreateNotification,
 
-const {
-  getConsciousness,
-  createConsciousness
-} = require('../controllers/consciousnesses')
+  validateGetNotification
+} = require('../controllers/notifications/validators')
 
-/*
- * Get items route
- */
 router.get(
-  '/:id',
+  '/:userId',
   requireAuth,
   roleAuthorization(['user', 'admin']),
   trimRequest.all,
-  getConsciousness
+  validateGetNotification,
+  getNotification
 )
 
-router.post(
-  '/',
+router.patch(
+  '/:userId',
   requireAuth,
   roleAuthorization(['user', 'admin']),
   trimRequest.all,
-  validateCreateConsciousness,
-  createConsciousness
+  validateCreateNotification,
+  createNotification
 )
 
 module.exports = router

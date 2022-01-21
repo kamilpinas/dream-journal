@@ -14,6 +14,9 @@ const SharedDreamSchema = new mongoose.Schema(
     username: {
       type: String
     },
+    title: {
+      type: String
+    },
     description: {
       type: String
     },

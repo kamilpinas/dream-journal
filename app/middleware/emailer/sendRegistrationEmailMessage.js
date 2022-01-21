@@ -12,7 +12,7 @@ const sendRegistrationEmailMessage = (locale = '', user = {}) => {
   const htmlMessage = i18n.__(
     'registration.MESSAGE',
     user.name,
-    process.env.FRONTEND_URL,
+    `${process.env.FRONTEND_URL}`,
     user.verification
   )
   prepareToSendEmail(user, subject, htmlMessage)

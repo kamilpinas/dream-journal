@@ -7,6 +7,7 @@ const validateCreateSharedDream = [
   check('sharedOn').exists().withMessage('MISSING'),
   check('votes').exists().withMessage('MISSING'),
   check('username').exists().withMessage('MISSING'),
+  check('title').exists().withMessage('MISSING'),
   check('description').exists().withMessage('MISSING'),
   check('category').exists().withMessage('MISSING'),
 

@@ -5,6 +5,7 @@ const { deleteSharedDream } = require('./deleteSharedDream')
 const { incrementVotes } = require('./incrementVotes')
 const { decrementVotes } = require('./decrementVotes')
 const { getRandomSharedDream } = require('./getRandomSharedDream')
+const { getSharedDreamWithCategory } = require('./getSharedDreamWithCategory')
 module.exports = {
   getSharedDreams,
   getSharedDream,
@@ -12,5 +13,6 @@ module.exports = {
   deleteSharedDream,
   getRandomSharedDream,
   incrementVotes,
-  decrementVotes
+  decrementVotes,
+  getSharedDreamWithCategory
 }
