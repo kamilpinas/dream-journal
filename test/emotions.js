@@ -2,7 +2,6 @@
 
 process.env.NODE_ENV = 'test'
 
-const User = require('../app/models/user')
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const server = require('../server')
@@ -13,23 +12,19 @@ const loginDetails = {
         id: '5aa1c2c35ef7a4e97b5e995a',
         email: 'admin@admin.com',
         password: '12345'
-    },
-    user: {
-        id: '5aa1c2c35ef7a4e97b5e995b',
-        email: 'user@user.com',
-        password: '12345'
     }
 }
 const tokens = {
-    admin: '',
-    user: ''
+    admin: ''
 }
-
-const createdID = []
-
+let createdId = ''
+const emotion = {
+    name: 'Zdziwienie',
+    type: 'Dziwne'
+}
 chai.use(chaiHttp)
 
-describe('*********** USERS ***********', () => {
+describe('*********** EMOTIONS ***********', () => {
     describe('/POST login', () => {
         it('it should GET token as admin', (done) => {
             chai
@@ -45,48 +40,40 @@ describe('*********** USERS ***********', () => {
                 })
         })
     })
-    describe('/GET users', () => {
-        it('it should NOT be able to consume the route since no token was sent', (done) => {
+    describe('/GET emotions', () => {
+        it('it should get emotions', (done) => {
             chai
                 .request(server)
-                .get('/users')
-                .end((err, res) => {
-                    res.should.have.status(401)
-                    done()
-                })
-        })
-        it('it should GET all the users', (done) => {
-            chai
-                .request(server)
-                .get('/users')
+                .get(`/emotions`)
                 .set('Authorization', `Bearer ${tokens.admin}`)
                 .end((err, res) => {
                     res.should.have.status(200)
-                    res.body.should.be.an('object')
+
                     res.body.docs.should.be.a('array')
-                    done()
-                })
-        })
-        it('it should GET the users with filters', (done) => {
-            chai
-                .request(server)
-                .get('/users?filter=admin&fields=name,email,city,country,phone')
-                .set('Authorization', `Bearer ${tokens.admin}`)
-                .end((err, res) => {
-                    res.should.have.status(200)
-                    res.body.should.be.an('object')
-                    res.body.docs.should.be.a('array')
-                    res.body.docs.should.have.lengthOf(1)
-                    res.body.docs[0].should.have.property('email').eql('admin@admin.com')
                     done()
                 })
         })
     })
-    describe('/DELETE/:id user', () => {
-        it('it should DELETE a user given the id', (done) => {
+    describe('/POST emotions', () => {
+        it('it should create new emotion', (done) => {
             chai
                 .request(server)
-                .delete(`/users/${loginDetails.admin.id}`)
+                .post(`/emotions`)
+                .send(emotion)
+                .set('Authorization', `Bearer ${tokens.admin}`)
+                .end((err, res) => {
+                    res.should.have.status(201)
+                    res.body.should.be.a('object')
+                    createdId = res.body.name
+                    done()
+                })
+        })
+    })
+    describe('/DELETE/:names emotion', () => {
+        it('it should DELETE a emotions given the names', (done) => {
+            chai
+                .request(server)
+                .delete(`/emotions/${createdId}`)
                 .set('Authorization', `Bearer ${tokens.admin}`)
                 .end((error, result) => {
                     result.should.have.status(200)
@@ -94,16 +81,6 @@ describe('*********** USERS ***********', () => {
                     result.body.should.have.property('msg').eql('DELETED')
                     done()
                 })
-        })
-    })
-
-    after(() => {
-        createdID.forEach((id) => {
-            User.findByIdAndRemove(id, (err) => {
-                if (err) {
-                    console.log(err)
-                }
-            })
         })
     })
 })
