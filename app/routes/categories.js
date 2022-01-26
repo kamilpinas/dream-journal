@@ -9,10 +9,15 @@ const trimRequest = require('trim-request')
 
 const { roleAuthorization } = require('../controllers/auth')
 
-const { getCategories, createCategory } = require('../controllers/categories')
+const {
+  getCategories,
+  createCategory,
+  deleteCategory
+} = require('../controllers/categories')
 
 const {
-  validateCreateCategory
+  validateCreateCategory,
+  validateDeleteCategory
 } = require('../controllers/categories/validators')
 
 /*
@@ -29,10 +34,19 @@ router.get(
 router.post(
   '/',
   requireAuth,
-  roleAuthorization(['user', 'admin']),
+  roleAuthorization(['admin']),
   trimRequest.all,
   validateCreateCategory,
   createCategory
+)
+
+router.delete(
+  '/:id',
+  requireAuth,
+  roleAuthorization(['admin']),
+  trimRequest.all,
+  validateDeleteCategory,
+  deleteCategory
 )
 
 module.exports = router

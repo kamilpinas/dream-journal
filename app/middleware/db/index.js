@@ -8,13 +8,14 @@ const { getItems } = require('./getItems')
 const { listInitOptions } = require('./listInitOptions')
 const { updateItem } = require('./updateItem')
 const { getRandomItem } = require('./getRandomItem')
-
+const { deleteItems } = require('./deleteItems')
 module.exports = {
   buildSort,
   checkQueryString,
   cleanPaginationID,
   createItem,
   deleteItem,
+  deleteItems,
   getItem,
   getItems,
   listInitOptions,

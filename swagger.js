@@ -37,7 +37,7 @@ const doc = {
       description: 'Endpoints'
     },
     {
-      name: 'Profile',
+      name: 'Notifications',
       description: 'Endpoints'
     },
     {

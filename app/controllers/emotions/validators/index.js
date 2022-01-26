@@ -1,5 +1,6 @@
 const { validateCreateEmotion } = require('./validateCreateEmotion')
-
+const { validateDeleteEmotion } = require('./validateDeleteEmotion')
 module.exports = {
-  validateCreateEmotion
+  validateCreateEmotion,
+  validateDeleteEmotion
 }

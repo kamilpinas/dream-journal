@@ -4,18 +4,13 @@ const {
   checkLoginAttemptsAndBlockExpires
 } = require('./checkLoginAttemptsAndBlockExpires')
 const { checkPermissions } = require('./checkPermissions')
-const { findForgotPassword } = require('./findForgotPassword')
 const { findUser } = require('./findUser')
 const { findUserById } = require('./findUserById')
-const { findUserToResetPassword } = require('./findUserToResetPassword')
-const { forgotPasswordResponse } = require('./forgotPasswordResponse')
 const { generateToken } = require('./generateToken')
 const { getUserIdFromToken } = require('./getUserIdFromToken')
-const { markResetPasswordAsUsed } = require('./markResetPasswordAsUsed')
 const { passwordsDoNotMatch } = require('./passwordsDoNotMatch')
 const { registerUser } = require('./registerUser')
 const { returnRegisterToken } = require('./returnRegisterToken')
-const { saveForgotPassword } = require('./saveForgotPassword')
 const { saveLoginAttemptsToDB } = require('./saveLoginAttemptsToDB')
 const {
   saveUserAccessAndReturnToken
@@ -31,18 +26,13 @@ module.exports = {
   blockUser,
   checkLoginAttemptsAndBlockExpires,
   checkPermissions,
-  findForgotPassword,
   findUser,
   findUserById,
-  findUserToResetPassword,
-  forgotPasswordResponse,
   generateToken,
   getUserIdFromToken,
-  markResetPasswordAsUsed,
   passwordsDoNotMatch,
   registerUser,
   returnRegisterToken,
-  saveForgotPassword,
   saveLoginAttemptsToDB,
   saveUserAccessAndReturnToken,
   setUserInfo,

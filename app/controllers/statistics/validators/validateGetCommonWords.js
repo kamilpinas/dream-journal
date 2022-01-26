@@ -2,10 +2,10 @@ const { validateResult } = require('../../../middleware/utils')
 const { check } = require('express-validator')
 
 /**
- * Validates get item request
+ * Validates delete item request
  */
-const validateGetCity = [
-  check('id')
+const validateGetCommonWords = [
+  check('userId')
     .exists()
     .withMessage('MISSING')
     .not()
@@ -16,4 +16,4 @@ const validateGetCity = [
   }
 ]
 
-module.exports = { validateGetCity }
+module.exports = { validateGetCommonWords }

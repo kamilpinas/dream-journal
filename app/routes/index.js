@@ -8,11 +8,10 @@ router.use('/categories', require('./categories'))
 router.use('/consciousness', require('./consciousness'))
 router.use('/dream', require('./dream'))
 router.use('/emotions', require('./emotions'))
-router.use('/profile', require('./profile'))
 router.use('/users', require('./users'))
 router.use('/shared-dreams', require('./sharedDreams'))
 router.use('/notifications', require('./notification'))
-
+router.use('/statistics', require('./statistics'))
 /*
  * Setup routes for index
  */

@@ -34,7 +34,7 @@ const {
 router.get(
   '/',
   requireAuth,
-  roleAuthorization(['admin', 'user']),
+  roleAuthorization(['user', 'admin']),
   trimRequest.all,
   getUsers
 )
@@ -57,7 +57,7 @@ router.post(
 router.get(
   '/:id',
   requireAuth,
-  roleAuthorization(['admin']),
+  roleAuthorization(['user', 'admin']),
   trimRequest.all,
   validateGetUser,
   getUser

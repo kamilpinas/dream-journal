@@ -9,9 +9,16 @@ const trimRequest = require('trim-request')
 
 const { roleAuthorization } = require('../controllers/auth')
 
-const { getEmotions, createEmotion } = require('../controllers/emotions')
+const {
+  getEmotions,
+  createEmotion,
+  deleteEmotion
+} = require('../controllers/emotions')
 
-const { validateCreateEmotion } = require('../controllers/emotions/validators')
+const {
+  validateCreateEmotion,
+  validateDeleteEmotion
+} = require('../controllers/emotions/validators')
 
 /*
  * Get items route
@@ -27,10 +34,19 @@ router.get(
 router.post(
   '/',
   requireAuth,
-  roleAuthorization(['user', 'admin']),
+  roleAuthorization(['admin']),
   trimRequest.all,
   validateCreateEmotion,
   createEmotion
+)
+
+router.delete(
+  '/:names',
+  requireAuth,
+  roleAuthorization(['admin']),
+  trimRequest.all,
+  validateDeleteEmotion,
+  deleteEmotion
 )
 
 module.exports = router

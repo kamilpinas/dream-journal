@@ -9,54 +9,45 @@ const trimRequest = require('trim-request')
 
 const { roleAuthorization } = require('../controllers/auth')
 
+const { getCommonWords } = require('../controllers/statistics/getCommonWords')
 const {
-  getProfile,
-  updateProfile,
-  changePassword
-} = require('../controllers/profile')
+  getCategoriesStats
+} = require('../controllers/statistics/getCategoriesStats')
+const {
+  getEmotionsStats
+} = require('../controllers/statistics/getEmotionsStats')
 
 const {
-  validateUpdateProfile,
-  validateChangePassword
-} = require('../controllers/profile/validators')
-
+  validateGetCommonWords
+} = require('../controllers/statistics/validators/validateGetCommonWords')
 /*
- * Profile routes
- */
-
-/*
- * Get profile route
+ * Get analysis by id route
  */
 router.get(
-  '/',
+  '/:userId',
   requireAuth,
   roleAuthorization(['user', 'admin']),
   trimRequest.all,
-  getProfile
+  validateGetCommonWords,
+  getCommonWords
 )
 
-/*
- * Update profile route
- */
-router.patch(
-  '/',
+router.get(
+  '/categories/:userId',
   requireAuth,
   roleAuthorization(['user', 'admin']),
   trimRequest.all,
-  validateUpdateProfile,
-  updateProfile
+  validateGetCommonWords,
+  getCategoriesStats
 )
 
-/*
- * Change password route
- */
-router.post(
-  '/changePassword',
+router.get(
+  '/emotions/:userId',
   requireAuth,
   roleAuthorization(['user', 'admin']),
   trimRequest.all,
-  validateChangePassword,
-  changePassword
+  validateGetCommonWords,
+  getEmotionsStats
 )
 
 module.exports = router

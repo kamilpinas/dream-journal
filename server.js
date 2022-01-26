@@ -21,22 +21,6 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 
-// Redis cache enabled by env variable
-if (process.env.USE_REDIS === 'true') {
-  const getExpeditiousCache = require('express-expeditious')
-  const cache = getExpeditiousCache({
-    namespace: 'expresscache',
-    defaultTtl: '1 minute',
-    engine: require('expeditious-engine-redis')({
-      redis: {
-        host: process.env.REDIS_HOST,
-        port: process.env.REDIS_PORT
-      }
-    })
-  })
-  app.use(cache)
-}
-
 // for parsing json
 app.use(
   bodyParser.json({

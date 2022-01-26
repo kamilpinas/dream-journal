@@ -5,7 +5,6 @@ const { itemNotFound } = require('../../../middleware/utils')
  * @param {Object} user - user object
  */
 const verifyUser = (model = {}, id = '') => {
-  console.log(id)
   return new Promise((resolve, reject) => {
     model.updateOne(
       { verification: id },
