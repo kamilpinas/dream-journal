@@ -3,9 +3,7 @@ const router = express.Router()
 
 // Load Auth route
 router.use('/auth', require('./auth'))
-router.use('/analysis', require('./analysis'))
 router.use('/categories', require('./categories'))
-router.use('/consciousness', require('./consciousness'))
 router.use('/dream', require('./dream'))
 router.use('/emotions', require('./emotions'))
 router.use('/users', require('./users'))

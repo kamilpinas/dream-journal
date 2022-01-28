@@ -10,10 +10,8 @@ const trimRequest = require('trim-request')
 const { roleAuthorization } = require('../controllers/auth')
 
 const {
-  getSharedDream,
   createSharedDream,
   deleteSharedDream,
-  getSharedDreams,
   getRandomSharedDream,
   incrementVotes,
   decrementVotes,
@@ -42,22 +40,6 @@ router.get(
   trimRequest.all,
   validateGetDreamWithCategory,
   getSharedDreamWithCategory
-)
-
-router.get(
-  '/',
-  requireAuth,
-  roleAuthorization(['user', 'admin']),
-  trimRequest.all,
-  getSharedDreams
-)
-
-router.get(
-  '/:id',
-  requireAuth,
-  roleAuthorization(['user', 'admin']),
-  trimRequest.all,
-  getSharedDream
 )
 
 router.post(
